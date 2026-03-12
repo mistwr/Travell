@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    tools:context=".MainActivity">
+
+    <!-- ═══════════════════════════════════════════════════════════
+         TOP BAR — App title + status indicator
+    ═══════════════════════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="@color/bg_surface"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="12dp"
+        android:elevation="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Glowing status dot -->
+        <ImageView
+            android:id="@+id/statusIndicator"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/ic_circle"
+            android:colorFilter="#444444"
+            android:layout_marginEnd="8dp" />
+
+        <!-- App name -->
+        <TextView
+            android:id="@+id/tvAppName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="LUMINAI TRAVEL"
+            android:textColor="@color/cyan_primary"
+            android:textSize="16sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.15"
+            android:textStyle="bold" />
+
+        <!-- Status text -->
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STANDBY"
+            android:textColor="#888888"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.1"
+            android:layout_marginEnd="8dp" />
+
+        <!-- LUMIN AI toggle button -->
+        <ImageButton
+            android:id="@+id/btnLumin"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_ai"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="@color/cyan_primary"
+            android:contentDescription="Toggle LUMIN AI panel" />
+
+        <!-- Mock location setup button -->
+        <ImageButton
+            android:id="@+id/btnMockHelper"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_settings"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="#888888"
+            android:contentDescription="Mock location setup" />
+
+    </LinearLayout>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         MAP — Full screen OpenStreetMap
+    ═══════════════════════════════════════════════════════════ -->
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintBottom_toTopOf="@id/bottomPanel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ═══════════════════════════════════════════════════════════
+         BOTTOM PANEL — Search + controls
+    ═══════════════════════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/bottomPanel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/bg_surface"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- LUMIN AI Response Panel (collapsible) -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardAiPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <!-- AI header -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⬡ LUMIN AI"
+                    android:textColor="@color/cyan_primary"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.2"
+                    android:layout_marginBottom="6dp" />
+
+                <!-- Scrollable AI response -->
+                <ScrollView
+                    android:id="@+id/scrollAiResponse"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:scrollbars="vertical">
+
+                    <TextView
+                        android:id="@+id/tvAiResponse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#CCCCCC"
+                        android:textSize="12sp"
+                        android:fontFamily="monospace"
+                        android:lineSpacingMultiplier="1.4"
+                        tools:text="LUMIN AI Ready..." />
+
+                </ScrollView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Coordinates display -->
+        <TextView
+            android:id="@+id/tvCoordinates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text=""
+            android:textColor="@color/cyan_primary"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            android:textAlignment="center"
+            android:paddingBottom="4dp" />
+
+        <!-- Search row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:gravity="center_vertical">
+
+            <!-- Search field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:boxStrokeColor="@color/cyan_primary"
+                app:boxBackgroundColor="@color/bg_input"
+                app:hintTextColor="@color/cyan_primary"
+                android:layout_marginEnd="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/searchEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter city, address or coordinates..."
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="14sp"
+                    android:fontFamily="monospace"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:maxLines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Search button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSearch"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:padding="0dp"
+                app:icon="@drawable/ic_search"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="20dp"
+                app:backgroundTint="@color/cyan_primary"
+                app:iconTint="@color/bg_dark"
+                app:cornerRadius="8dp"
+                android:contentDescription="Search" />
+
+        </LinearLayout>
+
+        <!-- Progress bar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:visibility="gone"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/cyan_primary"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
+
+        <!-- Action buttons row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="4dp">
+
+            <!-- TRAVEL button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTravel"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="🚀  TRAVEL HERE"
+                android:textColor="@color/bg_dark"
+                android:textSize="12sp"
+                android:fontFamily="monospace"
+                android:letterSpacing="0.1"
+                android:visibility="gone"
+                app:backgroundTint="@color/cyan_primary"
+                app:cornerRadius="8dp"
+                android:layout_marginEnd="6dp" />
+
+            <!-- STOP button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnStop"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="⏹  STOP GPS"
+                android:textColor="@color/cyan_primary"
+                android:textSize="12sp"
+                android:fontFamily="monospace"
+                android:letterSpacing="0.1"
+                android:visibility="gone"
+                app:backgroundTint="@color/bg_surface"
+                app:strokeColor="@color/cyan_primary"
+                app:strokeWidth="1dp"
+                app:cornerRadius="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

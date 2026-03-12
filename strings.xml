@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LUMINAI Travel</string>
+    <string name="search_hint">Enter city, address or coordinates…</string>
+    <string name="btn_travel">TRAVEL HERE</string>
+    <string name="btn_stop">STOP GPS</string>
+    <string name="status_active">MOCK GPS ACTIVE</string>
+    <string name="status_standby">STANDBY</string>
+    <string name="channel_name">LUMINAI Mock GPS</string>
+    <string name="notification_title">LUMINAI Travel — Mock GPS Active</string>
+    <string name="mock_location_required">Enable Mock Location in Developer Options</string>
+    <string name="mock_location_app">Select LUMINAI Travel as mock location app</string>
+</resources>

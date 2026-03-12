@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ── LUMINAI Brand Colors ────────────────────────────────── -->
+    <color name="cyan_primary">#00E5FF</color>
+    <color name="cyan_dark">#00B2CC</color>
+    <color name="cyan_glow">#1AFFFFFF</color>
+
+    <!-- ── Dark Futuristic Backgrounds ────────────────────────── -->
+    <color name="bg_dark">#050A0F</color>
+    <color name="bg_surface">#0D1117</color>
+    <color name="bg_card">#111820</color>
+    <color name="bg_input">#0A1520</color>
+
+    <!-- ── Text ────────────────────────────────────────────────── -->
+    <color name="text_primary">#E0E0E0</color>
+    <color name="text_hint">#4A6070</color>
+    <color name="text_secondary">#7A8A96</color>
+
+    <!-- ── Status Colors ───────────────────────────────────────── -->
+    <color name="status_active">#00E5FF</color>
+    <color name="status_inactive">#444444</color>
+    <color name="status_error">#FF4444</color>
+
+    <!-- ── Material required ───────────────────────────────────── -->
+    <color name="purple_200">#00B2CC</color>
+    <color name="purple_500">#00E5FF</color>
+    <color name="purple_700">#0097A7</color>
+    <color name="teal_200">#00E5FF</color>
+    <color name="teal_700">#00B2CC</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

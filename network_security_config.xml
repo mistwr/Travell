@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Allow cleartext traffic to Nominatim (HTTPS only, this is a fallback) -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+    <!-- Nominatim uses HTTPS, this config is for completeness -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">nominatim.openstreetmap.org</domain>
+        <domain includeSubdomains="true">tile.openstreetmap.org</domain>
+    </domain-config>
+</network-security-config>

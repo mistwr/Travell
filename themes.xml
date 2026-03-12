@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base dark futuristic theme -->
+    <style name="Theme.LUMINAITravel" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/cyan_primary</item>
+        <item name="colorPrimaryVariant">@color/cyan_dark</item>
+        <item name="colorOnPrimary">@color/bg_dark</item>
+
+        <!-- Secondary -->
+        <item name="colorSecondary">@color/cyan_primary</item>
+        <item name="colorSecondaryVariant">@color/cyan_dark</item>
+        <item name="colorOnSecondary">@color/bg_dark</item>
+
+        <!-- Backgrounds -->
+        <item name="android:colorBackground">@color/bg_dark</item>
+        <item name="colorSurface">@color/bg_surface</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+
+        <!-- Text -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+
+        <!-- Status bar: dark -->
+        <item name="android:statusBarColor">@color/bg_dark</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:navigationBarColor">@color/bg_surface</item>
+
+        <!-- TextInputLayout outline style -->
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+
+        <!-- Ripple color -->
+        <item name="colorControlHighlight">#1A00E5FF</item>
+    </style>
+
+    <!-- Splash / launcher theme -->
+    <style name="Theme.LUMINAITravel.Splash" parent="Theme.LUMINAITravel">
+        <item name="android:windowBackground">@color/bg_dark</item>
+    </style>
+
+</resources>
